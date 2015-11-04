@@ -56,16 +56,18 @@ Win_Cond_Diag.prototype.check = function(board,turn){
     var num_cols = Math.sqrt(board.length);
     var right_diagonals_filled = 0;
     var left_diagonals_filled = 0;
-    for(var i=0;i<board.length - 1;i+=(col_length+1)) {
-        if (board[i][turn]) {
+    for(var i=0;i<col_length;i++) {
+        var j = i;
+        if(board[(i*col_length) + j][turn]){
             right_diagonals_filled++;
         }
         else{
             break;
         }
     }
-    for(var j=col_length-1;j<num_cols - 1; j+=(col_length+1)){
-        if(board[i][turn]){
+    for(a=0;a<num_cols; a++){
+        var b = num_cols - 1 - a;
+        if(board[(b*col_length) + a][turn]){
             left_diagonals_filled++;
         }
         else{
