@@ -63,10 +63,10 @@ var win_condition = function(){
     self.check_col_win = function(board,turn){
         var col_length = Math.sqrt(board.length);
         var num_cols = Math.sqrt(board.length);
-        for(var i=0;i<col_length - 1;i+=col_length){
+        for(var i=0;i<col_length - 1;i++){
             var cols_filled = 0;
             for(var j=0;j<num_cols - 1; j+=num_cols){
-                if(board[(i * col_length) + j][turn]){
+                if(board[j][turn]){
                     cols_filled++;
                 }
                 else{
@@ -84,7 +84,7 @@ var win_condition = function(){
         var num_cols = Math.sqrt(board.length);
         var right_diagonals_filled = 0;
         var left_diagonals_filled = 0;
-        for(var i=0;i<board.length - 1;i+=(col_length-1)) {
+        for(var i=0;i<board.length - 1;i+=(col_length+1)) {
             if (board[i][turn]) {
                 right_diagonals_filled++;
             }
@@ -92,7 +92,7 @@ var win_condition = function(){
                 break;
             }
         }
-        for(var j=0;j<num_cols - 1; j+=(col_length+1)){
+        for(var j=col_length-1;j<num_cols - 1; j+=(col_length+1)){
             if(board[i][turn]){
                 left_diagonals_filled++;
             }
