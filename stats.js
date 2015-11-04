@@ -12,8 +12,8 @@ $(document).ready(function(){
         console.log('you been clicked');
        $('.games-played-val').text(gamesPlayed).css("text-align","center:");
         $('.x-wins-val').text(xWins).css("text align","center");
-        $('.o-wins-val').text(9).css("text align","center");
-        games_played+=1;
+        $('.o-wins-val').text(oWins).css("text align","center");
+        gamesPlayed+=1;
         xWins=0;
         oWins=0;
         displayStats();
