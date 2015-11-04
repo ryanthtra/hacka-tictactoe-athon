@@ -26,6 +26,7 @@ Win_Cond_Row.prototype.check = function (board, turn) {
             return true;
         }
     }
+    return false;
 };
 
 var Win_Cond_Col = function(){};
@@ -46,6 +47,7 @@ Win_Cond_Col.prototype.check = function(board,turn){
     if(cols_filled == col_length){//if entire column is full of 'x' or 'o', then player wins!
         return true;
     }
+    return false;
 };
 
 var Win_Cond_Diag = function(){};
@@ -77,5 +79,6 @@ Win_Cond_Diag.prototype.check = function(board,turn){
     if(right_diagonals_filled || left_diagonals_filled == col_length){//if entire diagonal is full of 'x' or 'o', then player wins!
         return true;
     }
+    return false;
 };
 
