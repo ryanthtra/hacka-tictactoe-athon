@@ -20,6 +20,7 @@ body{
     font-size: 30px;
     font-family: "arial", helvetica, sans-serif;
     line-height:200%;
+    text-align:center;
 
 }
 
@@ -27,3 +28,6 @@ body{
     color:silver;
 }
 
+#reset-game{
+    background-color:black;
+}
