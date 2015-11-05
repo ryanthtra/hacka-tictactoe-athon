@@ -8,6 +8,7 @@ function Game()
     this.win_conditions = [];
     this.x_wins = 0;
     this.o_wins = 0;
+    this.games_played = 0;
 
     this.init();
 }
@@ -18,6 +19,7 @@ function Game()
  */
 Game.prototype.init = function()
 {
+    this.updateStatsDisplay();
     this.enableButtons();
     this.game_board = new GameBoard();
     this.constructBoardInDom();
@@ -86,6 +88,7 @@ Game.prototype.changeState = function(new_state)
  */
 Game.prototype.restartGame = function()
 {
+    this.updateStatsDisplay();
     this.enableButtons();
     this.game_board.restartBoard();
     this.game_over = false;
@@ -199,7 +202,9 @@ Game.prototype.declareWinner = function()
     this.disableButtons();
 
     // This is only for the skeleton test html page
-    this.displayWinnerTest();
+    //this.displayWinnerTest();
+
+    this.games_played++;
 
     if (this.turn == 'X')
         this.x_wins++;
@@ -208,6 +213,8 @@ Game.prototype.declareWinner = function()
 
     this.game_over = true;
     this.winner = this.turn;
+
+    this.updateStatsDisplay();
 };
 
 
@@ -220,6 +227,14 @@ Game.prototype.displayWinnerTest = function()
     $('#player-turn').text(this.turn + " has won the game!!!");
 };
 
+
+Game.prototype.updateStatsDisplay = function()
+{
+    // Grab the winner's DOM element
+    $('.x-wins-val').text(this.x_wins);
+    $('.o-wins-val').text(this.o_wins);
+    $('.games-played-val').text(this.games_played);
+};
 
 Game.prototype.disableButtons = function()
 {
