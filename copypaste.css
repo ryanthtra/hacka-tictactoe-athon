@@ -28,7 +28,6 @@ body{
     display:inline;
     margin:auto;
     text-align: center;
-
 }
 
 .o-wins-val,.games-played-val, .x-wins-val{
@@ -39,3 +38,7 @@ body{
     font-size:25px;
 }
 
+#reset-game{
+    background-color:black;
+    text-align:center;
+}
