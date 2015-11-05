@@ -31,10 +31,7 @@ p{
     height:100%;
 }
 
-button{
-    background-color:black;
-}
-h1{
+h2{
     color:red;
     font-size:80px;
     float:right;
@@ -42,8 +39,18 @@ h1{
     font-family: serif;
     text-shadow: 5px 12px black;
     position:relative;
+    top:-42px;
 }
 
+.stats {
+    color: red;
+    font-size: 80px;
+    float: right;
+    left: 200px;
+    font-family: serif;
+    text-shadow: 5px 12px black;
+    position: relative;
+}
 @-webkit-keyframes bounce {
     0%       { bottom:5px; }
     25%, 75% { bottom:15px; }
@@ -77,7 +84,7 @@ body { margin: 0; }
     background-size: cover;
 }
 
-#neon-tubing {
+.neon-tubing {
     margin: 0;
     font-weight: 100;
     background-image: radial-gradient(ellipse farthest-corner,rgba(0,0,0,0),rgba(0,0,0,0));
@@ -95,4 +102,13 @@ body { margin: 0; }
     0 0 60px rgba(255,0,84,0.2),
     0 0 80px rgba(255,0,84,0.1);
 }
-#neon-tubing span { animation: neonspark 4s 3s infinite;  }
+
+*:focus {
+    outline: none;
+}
+.neon {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 15px white, 0 0 30px red, 0 0 30px red, 0 0 30px red, 0 0 40px deepskyblue, 0 0 50px deepskyblue, 0 0 60px deepskyblue, 0 0 70px red, 0 0 80px red, 0 0 90px red, 0 0 100px red;
+}
