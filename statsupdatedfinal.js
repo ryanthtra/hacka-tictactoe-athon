@@ -10,7 +10,7 @@ var oWins=0;
 $(document).ready(function(){
     $('.stats-container, #reset-game').on("click", "button", function () {
         console.log('you been clicked');
-        $('.games-played-val').text(gamesPlayed).css("text-align","center:");
+       $('.games-played-val').text(gamesPlayed).css("text-align","center:");
         $('.x-wins-val').text(xWins).css("text align","center");
         $('.o-wins-val').text(oWins).css("text align","center");
         gamesPlayed+=1;
@@ -26,6 +26,16 @@ function displayStats(){
     $('.x-wins-val').text(xWins).css("text-align","center");
     $('.o-wins-val').text(oWins).css("text-align","center");
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,24 +12,29 @@
     <script src="main.js"></script>
     <script src="state.js"></script>
     <script src="win-cond.js"></script>
+    <link rel="stylesheet" href="copypaste.css">
+    <script src="copypaste.js"></script>
 </head>
-<body>
-<h1 class="bounce" id="neon-tubing">
+<br>
+<h2 class="bounce neon-tubing">
     Tic-Tac-Toe
-</h1>
+</h2>
 <div class="game-area">
 </div>
-    <h1 class="label">Games Played</h1>>
-    <h1 class="games-played-val">0</h1>
+<div class="stats-container">
+    <h1 class="label neon contenteditable">Games Played</h1>
+    <h1 class="games-played-val neon contenteditable">0
+    </h1>
 
-    <h1 class="label">X-Wins</h1>
+    <h1 class="label neon contenteditable">X Wins</h1>
 
-    <h1 class="x-wins-val">0</h1>
+    <h1 class="x-wins-val neon contenteditable">0</h1>
 
-    <h1 class="label">O wins</h1>
+    <h1 class="label neon contenteditable">O Wins</h1>
 
-    <h1 class="o-wins-val">0</h1>
-
-    <h1 class="label">Reset Game</h1>
+    <h1 class="o-wins-val neon contenteditable">0</h1>
+    <br>
+    <button class="label btn-lg neon contenteditable" id="reset-game">Reset Game</button>
+</div>
 </body>
 </html>
