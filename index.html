@@ -4,9 +4,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="tictactoe.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="stats.js"></script>
+
 </head>
-<body>
-<h1 class="bounce" id="neon-tubing">
+<br>
+<h1 class="bounce neon-tubing">
     Tic-Tac-Toe
 </h1>
 <div class="game-area">
@@ -38,17 +41,25 @@
         <img src="images/st.jpg">
     </button>
 </div>
-    <h1 class="label">Games Played</h1>>
-    <h1 class="games-played-val">0</h1>
+<div class="stats-container">
+    <div>
+        <h2 class="label neonshadow">Games Played</h2>
 
-    <h1 class="label">X-Wins</h1>
+        <p class="value">0</p>
+    </div>
+    <div>
+        <h2 class="label">X Wins</h2>
 
-    <h1 class="x-wins-val">0</h1>
+        <p class="value">0</p>
+    </div>
+    <div>
+        <h2 class="label">O Wins</h2>
 
-    <h1 class="label">O wins</h1>
-
-    <h1 class="o-wins-val">0</h1>
-
-    <h1 class="label">Reset Game</h1>
+        <p class="value">0</p>
+    </div>
+    <div class="reset">
+        <button class="label btn-lg" id="reset-game">Reset Game</button>
+    </div>
+    </div>
 </body>
 </html>

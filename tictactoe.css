@@ -5,22 +5,22 @@ body{
 
 .stats-container{
     position:relative;
-    height:59%;
-    width:11%;
-    border: 5px solid green;
+    height:46%;
+    width:12%;
     float:right;
     no-repeat center center fixed;
     background-size: cover;
     left:186px;
-    bottom:391px;
+    bottom:37px;
     display:block;
+    color:white;
 
 
 }
 
 .label{
     position:relative;
-    color:white;
+    color:red;
     font-weight:bold;
     font-size: 35px;
     font-family: serif;
