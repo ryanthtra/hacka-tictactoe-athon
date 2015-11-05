@@ -215,6 +215,7 @@ Game.prototype.declareWinner = function()
     this.winner = this.turn;
 
     this.updateStatsDisplay();
+    alert(this.winner + " has won the game!!!");
 };
 
 
