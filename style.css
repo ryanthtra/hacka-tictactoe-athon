@@ -3,23 +3,30 @@ body{
     no-repeat: center center fixed;
     background-size: cover;
     position:relative;
-    width:90vw;
-    height:90vh;
+}
+
+.page-wrapper
+{
+    width: 96vw;
+    margin: 0 auto;
 }
 
 .game-area{
     position:relative;
+    display: inline-block;
     width:35vw;
     height:35vw;
-    top:200px;
-    left:40px;
+    top: 12.0vw;
+    float: left;
+    left: 6vw;
 }
 .empty-square{
-    border:5px ridge red;
+    border:.3vw ridge red;
+    box-sizing: border-box;
     display:inline-block;
     /*width:28%;*/
     /*height:32%;*/
-    /*margin:5px;*/
+    /*margin:.1vw;*/
 
 }
 p{
@@ -35,11 +42,10 @@ h2{
     color:red;
     font-size:80px;
     float:right;
-    left:200px;
     font-family: serif;
     text-shadow: 5px 12px black;
     position:relative;
-    top:-42px;
+    top: 2vw;
 }
 
 .stats {
@@ -93,7 +99,7 @@ body { margin: 0; }
     color: #fee;
     /*padding: 4rem;*/
     text-transform: uppercase;
-    font-size: 6rem;
+    font-size: 5vw;
     letter-spacing: 2rem;
     animation: neonspark 1s 3s forwards;
     text-shadow:

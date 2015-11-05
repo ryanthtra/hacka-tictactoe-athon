@@ -107,8 +107,8 @@ Game.prototype.constructBoardInDom = function()
     var row_size = this.game_board.size;
     var num_rows = this.game_board.size;
 
-    var div_width = 99.0 / row_size;
-    var div_height = 99.0 / num_rows;
+    var div_width = 98.0 / row_size;
+    var div_height = 98.0 / num_rows;
     // Display each square according to how it's been filled.
     for (var i = 0; i < this.game_board.board.length; i++)
     {
