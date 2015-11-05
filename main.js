@@ -3,10 +3,16 @@ $(document).ready(function()
 {
     game = new Game();
 
-    $('#submit-button').on('click', function()
-    {
-        game.squarePicked(this);
-    });
+    //$('.game-area').on('click', 'button', function()
+    //{
+    //    game.squarePicked(this);
+    //});
+    //
+    //$('#submit-button').on('click', function()
+    //{
+    //    game.squarePicked(this);
+    //});
+
     $('#restart-game').on('click', function()
     {
         game.restartGame();

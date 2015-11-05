@@ -18,7 +18,9 @@ function Game()
  */
 Game.prototype.init = function()
 {
+    this.enableButtons();
     this.game_board = new GameBoard();
+    this.constructBoardInDom();
     this.setWinConditions();
     this.changeState(new StateInit(this));
     this.run();
@@ -57,12 +59,14 @@ Game.prototype.checkWinConditions = function()
 /**
  * run - the main controller of the game's state-machine
  */
-Game.prototype.run = function()
+Game.prototype.run = function(index)
 {
+    this.display(index);
     this.curr_state.execute(this);
 
     // For the skeleton html
-    this.displayTest();
+    //this.displayTest();
+    //this.display(index);
 };
 
 
@@ -82,10 +86,59 @@ Game.prototype.changeState = function(new_state)
  */
 Game.prototype.restartGame = function()
 {
+    this.enableButtons();
     this.game_board.restartBoard();
     this.game_over = false;
     this.changeState(new StateInit(this));
     this.run();
+};
+
+
+Game.prototype.constructBoardInDom = function()
+{
+    var game_area = $('.game-area');
+
+    // Empty out the game board display
+    game_area.html('');
+
+    var row_size = this.game_board.size;
+    var num_rows = this.game_board.size;
+
+    var div_width = 99.0 / row_size;
+    var div_height = 99.0 / num_rows;
+    // Display each square according to how it's been filled.
+    for (var i = 0; i < this.game_board.board.length; i++)
+    {
+        var img_path = EMPTY_IMAGE_PATH;
+        var square_button = $('<button>').addClass('empty-square');
+        square_button.css(
+            {
+                width: div_width + '%',
+                height: div_height + '%',
+                float: 'left'
+            }
+        );
+        square_button.attr('index', i);
+        var bg_img  = $('<img>').attr('src', img_path);
+        square_button.append(bg_img);
+        game_area.append(square_button);
+    }
+};
+
+
+Game.prototype.display = function(index)
+{
+    var square = $('.empty-square[index=' + index + ']>img');
+
+    switch(this.turn)
+    {
+        case 'X':
+            square.attr('src', X_IMAGE_PATH);
+            break;
+        case 'O':
+            square.attr('src', O_IMAGE_PATH);
+            break;
+    }
 };
 
 
@@ -129,11 +182,12 @@ Game.prototype.displayTest = function()
  */
 Game.prototype.squarePicked = function(button)
 {
-    var index = $('#square-number').val();
+    //var index = $('#square-number').val();
+    var index = $(button).attr('index');
     console.log("Square picked: " + index);
 
     if (this.game_board.setSquare(index, this.turn))
-        this.run();
+        this.run(index);
 }
 
 
@@ -142,6 +196,8 @@ Game.prototype.squarePicked = function(button)
  */
 Game.prototype.declareWinner = function()
 {
+    this.disableButtons();
+
     // This is only for the skeleton test html page
     this.displayWinnerTest();
 
@@ -160,5 +216,22 @@ Game.prototype.declareWinner = function()
  */
 Game.prototype.displayWinnerTest = function()
 {
+    console.log(this.turn + " HAS WON THE GAME!!!!");
     $('#player-turn').text(this.turn + " has won the game!!!");
+};
+
+
+Game.prototype.disableButtons = function()
+{
+    $('.game-area').off('click', 'button');
+};
+
+Game.prototype.enableButtons = function()
+{
+    var the_game = this;
+
+    $('.game-area').on('click', 'button', function()
+    {
+        the_game.squarePicked(this);
+    });
 };
