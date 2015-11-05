@@ -9,8 +9,8 @@ body{
 
 .game-area{
     position:relative;
-    width:36vw;
-    height:54vh;
+    width:36%;
+    height:54%;
     top:200px;
     left:40px;
 }
@@ -32,10 +32,7 @@ p{
     height:100%;
 }
 
-button{
-    background-color:black;
-}
-h1{
+h2{
     color:red;
     font-size:80px;
     float:right;
@@ -90,7 +87,6 @@ body { margin: 0; }
 .neon-tubing {
     margin: 0;
     font-weight: 100;
-    background-image: radial-gradient(ellipse farthest-corner,rgba(0,0,0,0),rgba(0,0,0,0)),
     text-align: center;
     font-family: serif;
     color: #fee;
@@ -104,4 +100,14 @@ body { margin: 0; }
     0 0 40px rgba(255,0,84,0.4),
     0 0 60px rgba(255,0,84,0.2),
     0 0 80px rgba(255,0,84,0.1);
+}
+
+*:focus {
+    outline: none;
+}
+.neon {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 15px white, 0 0 30px red, 0 0 30px red, 0 0 30px red, 0 0 40px deepskyblue, 0 0 50px deepskyblue, 0 0 60px deepskyblue, 0 0 70px red, 0 0 80px red, 0 0 90px red, 0 0 100px red;
 }

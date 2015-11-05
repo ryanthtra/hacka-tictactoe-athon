@@ -8,37 +8,34 @@ body{
     height:46%;
     width:12%;
     float:right;
-    no-repeat center center fixed;
-    background-size: cover;
-    left:186px;
-    bottom:37px;
-    display:block;
-    color:white;
-
-
+    right:-85px;
 }
 
 .label{
     position:relative;
-    color:red;
+    color:black;
     font-weight:bold;
     font-size: 35px;
     font-family: serif;
-    line-height:200%;
-    display:inline;
-    margin:auto;
     text-align: center;
+    text-shadow:black;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    width:100%;
+    padding-bottom:5px;
 }
 
 .o-wins-val,.games-played-val, .x-wins-val{
-    color:red;
+    color:white;
     font-family:serif;
     text-align:center;
-    display:inline;
-    font-size:25px;
+    display:block;
+    margin:auto 0;
+    font-size:55px;
 }
 
 #reset-game{
-    background-color:black;
     text-align:center;
+    background-color:transparent;
+    border:none;
 }
