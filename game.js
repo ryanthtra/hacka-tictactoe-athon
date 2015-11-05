@@ -91,6 +91,7 @@ Game.prototype.restartGame = function()
     this.updateStatsDisplay();
     this.enableButtons();
     this.game_board.restartBoard();
+    this.constructBoardInDom();
     this.game_over = false;
     this.changeState(new StateInit(this));
     this.run();
@@ -140,6 +141,9 @@ Game.prototype.display = function(index)
             break;
         case 'O':
             square.attr('src', O_IMAGE_PATH);
+            break;
+        default:
+            square.attr('src', EMPTY_IMAGE_PATH);
             break;
     }
 };
