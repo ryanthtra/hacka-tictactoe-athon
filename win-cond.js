@@ -1,10 +1,12 @@
 var debug = false;
 
-var Win_Cond = function(){};
+function Win_Cond() {}
 
-var Win_Cond_Row = function(){};
+function Win_Cond_Row() {
+    Win_Cond.call(this);
+}
 
-Win_Cond_Row.prototype = Object.create(Win_Cond.prototype);
+Win_Cond_Row.prototype = new Win_Cond();
 Win_Cond_Row.prototype.constructor = Win_Cond_Row;
 Win_Cond_Row.prototype.check = function (board, turn) {
     var row_length = Math.sqrt(board.length);
@@ -26,10 +28,14 @@ Win_Cond_Row.prototype.check = function (board, turn) {
             return true;
         }
     }
+    return false;
 };
 
-var Win_Cond_Col = function(){};
-Win_Cond_Col.prototype = Object.create(Win_Cond.prototype);
+function Win_Cond_Col() {
+    Win_Cond.call(this);
+}
+
+Win_Cond_Col.prototype = new Win_Cond();
 Win_Cond_Col.prototype.constructor = Win_Cond_Col;
 Win_Cond_Col.prototype.check = function(board,turn){
     var col_length = Math.sqrt(board.length);
@@ -46,11 +52,15 @@ Win_Cond_Col.prototype.check = function(board,turn){
     if(cols_filled == col_length){
         return true;
     }
+    return false;
 };
 
-var Win_Cond_Diag = function(){};
-Win_Cond_Diag.prototype = Object.create(Win_Cond.prototype);
-Win_Cond_Diag.prototype.constructor = Win_Cond_Col;
+function Win_Cond_Diag() {
+    Win_Cond.call(this);
+}
+
+Win_Cond_Diag.prototype = new Win_Cond();
+Win_Cond_Diag.prototype.constructor = Win_Cond_Diag;
 Win_Cond_Diag.prototype.check = function(board,turn){
     var col_length = Math.sqrt(board.length);
     var num_cols = Math.sqrt(board.length);
@@ -74,8 +84,9 @@ Win_Cond_Diag.prototype.check = function(board,turn){
             break;
         }
     }
-    if(right_diagonals_filled || left_diagonals_filled == col_length){
+    if(right_diagonals_filled == num_cols || left_diagonals_filled == num_cols){
         return true;
     }
+    return false;
 };
 

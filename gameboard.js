@@ -8,8 +8,8 @@ function GameBoard()
 
 GameBoard.prototype.constructBoard = function()
 {
-    var size = Math.floor((Math.random() * (MAX_BOARD_SIZE - MIN_BOARD_SIZE)) + MIN_BOARD_SIZE);
-    //var size = 3;
+    //var size = Math.floor((Math.random() * (MAX_BOARD_SIZE - MIN_BOARD_SIZE)) + MIN_BOARD_SIZE);
+    var size = 3;
     this.size = size;
 
     // Populate board array with empty square objects
