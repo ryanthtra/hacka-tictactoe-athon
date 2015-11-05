@@ -12,6 +12,10 @@ function Game()
     this.init();
 }
 
+
+/**
+ * init - starts the entire game
+ */
 Game.prototype.init = function()
 {
     this.game_board = new GameBoard();
@@ -21,6 +25,9 @@ Game.prototype.init = function()
 };
 
 
+/**
+ * setWinConditions - creates the set of win conditions for the game
+ */
 Game.prototype.setWinConditions = function()
 {
     this.win_conditions.push(new Win_Cond_Row());
@@ -28,28 +35,51 @@ Game.prototype.setWinConditions = function()
     this.win_conditions.push(new Win_Cond_Diag());
 };
 
+
+/**
+ * checkWinConditions - checks each win condition if any of them have been met
+ * @returns {boolean} - whether a win condition has been met
+ */
 Game.prototype.checkWinConditions = function()
 {
+    // Go through each win condition in the array
     for (var i = 0; i < this.win_conditions.length; i++)
     {
+        // If we meet a win condition, we can return the function right there;
+        // no need to check the other win conditions anymore.
         if (this.win_conditions[i].check(this.game_board.board, this.turn))
             return true;
     }
     return false;
 };
 
+
+/**
+ * run - the main controller of the game's state-machine
+ */
 Game.prototype.run = function()
 {
     this.curr_state.execute(this);
+
+    // For the skeleton html
     this.displayTest();
 };
 
+
+/**
+ * Changes the state for the state-machine
+ * @param new_state - the state to change to
+ */
 Game.prototype.changeState = function(new_state)
 {
     this.curr_state = new_state;
     this.curr_state.init(this);
 };
 
+
+/**
+ * restart - Start a brand new game (don't reset stats)
+ */
 Game.prototype.restartGame = function()
 {
     this.game_board.restartBoard();
@@ -58,16 +88,25 @@ Game.prototype.restartGame = function()
     this.run();
 };
 
+
+/**
+ * displayTest - updates the game in the DOM
+ */
 Game.prototype.displayTest = function()
 {
     var game_area = $('#game-area');
 
+    // Empty out the game board display
     game_area.html('');
+
+    // Display whose turn it is
     if (!this.game_over)
         $('#player-turn').text('Turn ' + this.turn);
 
     var row_size = this.game_board.size;
     var num_rows = this.game_board.size;
+
+    // Display each square according to how it's been filled.
     for (var i = 0; i < num_rows; i++)
     {
         for (var j = 0; j < row_size; j++)
@@ -83,6 +122,11 @@ Game.prototype.displayTest = function()
     }
 };
 
+
+/**
+ * squarePicked - event-handler for when the player picks a square to fill
+ * @param button - the button that was clicked (unnecessary)
+ */
 Game.prototype.squarePicked = function(button)
 {
     var index = $('#square-number').val();
@@ -92,9 +136,15 @@ Game.prototype.squarePicked = function(button)
         this.run();
 }
 
+
+/**
+ * declareWinner - sets win variables and stats
+ */
 Game.prototype.declareWinner = function()
 {
+    // This is only for the skeleton test html page
     this.displayWinnerTest();
+
     if (this.turn == 'X')
         this.x_wins++;
     else
@@ -104,6 +154,10 @@ Game.prototype.declareWinner = function()
     this.winner = this.turn;
 };
 
+
+/**
+ * displayWinnerTest - displays the winner message in the DOM
+ */
 Game.prototype.displayWinnerTest = function()
 {
     $('#player-turn').text(this.turn + " has won the game!!!");

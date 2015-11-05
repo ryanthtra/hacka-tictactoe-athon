@@ -6,10 +6,14 @@ function GameBoard()
     this.resetBoard();
 };
 
+/**
+ * constructBoard - create a square board array of a random row/column size and
+ *  populates the board with empty square objects
+ */
 GameBoard.prototype.constructBoard = function()
 {
-    //var size = Math.floor((Math.random() * (MAX_BOARD_SIZE - MIN_BOARD_SIZE)) + MIN_BOARD_SIZE);
-    var size = 3;
+    var size = Math.floor((Math.random() * (MAX_BOARD_SIZE - MIN_BOARD_SIZE)) + MIN_BOARD_SIZE);
+    //var size = 3;
     this.size = size;
 
     // Populate board array with empty square objects
@@ -25,6 +29,9 @@ GameBoard.prototype.constructBoard = function()
     }
 };
 
+/**
+ * resetBoard - "deletes" the current board and creates a new randomly-sized board
+ */
 GameBoard.prototype.resetBoard = function()
 {
     this.board = [];
@@ -33,6 +40,10 @@ GameBoard.prototype.resetBoard = function()
     this.constructBoard();
 };
 
+
+/**
+ * restartBoard - empties out all the squares of the current board
+ */
 GameBoard.prototype.restartBoard = function()
 {
     for (var i = 0; i < this.board.length; i++)
@@ -43,6 +54,13 @@ GameBoard.prototype.restartBoard = function()
     }
 }
 
+
+/**
+ *
+ * @param square_index
+ * @param player_char
+ * @returns {boolean}
+ */
 GameBoard.prototype.setSquare = function(square_index, player_char)
 {
     if ((this.board[square_index]['empty'] == true)
