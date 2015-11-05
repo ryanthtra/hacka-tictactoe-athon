@@ -38,6 +38,7 @@ StateTurnX.prototype.init = function(game)
 };
 StateTurnX.prototype.execute = function(game)
 {
+    this.has_won = game.checkWinConditions();
     if (this.has_won)
         game.changeState(new StateGameOver(game));
     else
@@ -58,6 +59,7 @@ StateTurnO.prototype.init = function(game)
 };
 StateTurnO.prototype.execute = function(game)
 {
+    this.has_won = game.checkWinConditions();
     if (this.has_won)
         game.changeState(new StateGameOver(game));
     else

@@ -15,8 +15,27 @@ function Game()
 Game.prototype.init = function()
 {
     this.game_board = new GameBoard();
+    this.setWinConditions();
     this.changeState(new StateInit(this));
     this.run();
+};
+
+
+Game.prototype.setWinConditions = function()
+{
+    this.win_conditions.push(new Win_Cond_Row());
+    this.win_conditions.push(new Win_Cond_Col());
+    this.win_conditions.push(new Win_Cond_Diag());
+};
+
+Game.prototype.checkWinConditions = function()
+{
+    for (var i = 0; i < this.win_conditions.length; i++)
+    {
+        if (this.win_conditions[i].check(this.game_board.board, this.turn))
+            return true;
+    }
+    return false;
 };
 
 Game.prototype.run = function()
