@@ -31,11 +31,11 @@ body{
 
 .game-area{
     display: inline-block;
-    width: 48vw;
-    height: 48vw;
+    width: 36vw;
+    height: 36vw;
     top: 12.0vw;
     float: left;
-    margin-left: 2vw;
+    margin-left: 6vw;
 }
 .stats-container{
     display: inline-block;
