@@ -1,7 +1,8 @@
 //document.addEventListener("DOMContentLoaded" , function(event)
 $(document).ready(function()
 {
-    game = new Game();
+    var game = new Game();
+    game_ref = game;
 
     document.getElementById('restart-game').addEventListener('click', function()
     {
@@ -9,12 +10,7 @@ $(document).ready(function()
     });
     document.getElementById('reset-game').addEventListener('click', function()
     {
-        resetGame();
+        game.resetGame();
+        console.log("Resetting game with board of size " + game_ref.game_board.board.length);
     });
 });
-
-function resetGame()
-{
-    game = null;
-    game = new Game();
-}

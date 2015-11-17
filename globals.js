@@ -8,4 +8,4 @@ var O_IMAGE_PATH = "images/o.jpg";
 var PLAYER_X = 0;
 var PLAYER_O = 1;
 
-var game = null;
+var game_ref = null;

@@ -1,6 +1,6 @@
 function GameBoard()
 {
-    this.board = [];
+    this.board = null;
     this.size = 0;  // Number of square in each row AND the number of rows
     this.empty_squares = 0;
 

@@ -84,6 +84,8 @@ Game.prototype.run = function(index)
  */
 Game.prototype.changeState = function(new_state)
 {
+    delete this.curr_state;
+
     this.curr_state = new_state;
     this.curr_state.init(this);
 };
@@ -103,6 +105,24 @@ Game.prototype.restartGame = function()
     this.updateStatsDisplay();
 };
 
+
+/**
+ * resetGame - Basically the constructor.
+ */
+Game.prototype.resetGame = function()
+{
+    this.disableButtons();
+    delete this.game_board;
+    delete this.curr_state;
+    this.winner = 'O';
+    this.turn = 'X';
+    this.game_over = false;
+    this.win_conditions = [];
+    this.games_played = 0;
+    this.players = [];
+
+    this.init();
+};
 
 Game.prototype.constructBoardInDom = function()
 {
