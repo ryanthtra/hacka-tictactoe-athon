@@ -111,7 +111,10 @@ Game.prototype.restartGame = function()
  */
 Game.prototype.resetGame = function()
 {
+    // Call this to prevent the current game board from being clickable
+    // if it's not yet getting garbage-collected.
     this.disableButtons();
+
     delete this.game_board;
     delete this.curr_state;
     this.winner = 'O';
@@ -124,6 +127,11 @@ Game.prototype.resetGame = function()
     this.init();
 };
 
+
+/**
+ * constructBoardInDom - Uses the game board to layout the game board squares
+ *  in the page view.
+ */
 Game.prototype.constructBoardInDom = function()
 {
     var game_area = $('.game-area');
@@ -134,8 +142,10 @@ Game.prototype.constructBoardInDom = function()
     var row_size = this.game_board.size;
     var num_rows = this.game_board.size;
 
-    var div_width = 98.0 / row_size;
-    var div_height = 98.0 / num_rows;
+    // Calculate the height and width of each square as a percentage in
+    // relation to its container div.
+    var div_width = 100.0 / row_size;
+    var div_height = 100.0 / num_rows;
     // Display each square according to how it's been filled.
     for (var i = 0; i < this.game_board.board.length; i++)
     {
@@ -156,6 +166,10 @@ Game.prototype.constructBoardInDom = function()
 };
 
 
+/**
+ * Sets the image to be shown for the square picked in the game
+ * @param index - the specific square on the board to set an image to it
+ */
 Game.prototype.display = function(index)
 {
     var square = $('.empty-square[index=' + index + ']>img');
@@ -257,7 +271,7 @@ Game.prototype.declareWinner = function()
 
 
 /**
- * declareWinner - sets win variables and stats
+ * declareDraw - Changes game stats and declares a tie
  */
 Game.prototype.declareDraw = function()
 {
@@ -273,15 +287,8 @@ Game.prototype.declareDraw = function()
 
 
 /**
- * displayWinnerTest - displays the winner message in the DOM
+ * updateStatsDisplay - updates the DOM view of the game stats
  */
-Game.prototype.displayWinnerTest = function()
-{
-    console.log(this.turn + " HAS WON THE GAME!!!!");
-    $('#player-turn').text(this.turn + " has won the game!!!");
-};
-
-
 Game.prototype.updateStatsDisplay = function()
 {
     // Grab the winner's DOM element
@@ -290,11 +297,19 @@ Game.prototype.updateStatsDisplay = function()
     $('.games-played-val').text(this.games_played);
 };
 
+
+/**
+ * disableButtons - removes clickablity of the game board squares
+ */
 Game.prototype.disableButtons = function()
 {
     $('.game-area').off('click', 'button');
 };
 
+
+/**
+ * enableButtons - adds clickability of the game board squares
+ */
 Game.prototype.enableButtons = function()
 {
     var the_game = this;
