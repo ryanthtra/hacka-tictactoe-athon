@@ -94,7 +94,6 @@ Game.prototype.changeState = function(new_state)
  */
 Game.prototype.restartGame = function()
 {
-
     this.enableButtons();
     this.game_board.restartBoard();
     this.constructBoardInDom();
@@ -234,6 +233,22 @@ Game.prototype.declareWinner = function()
 
     this.updateStatsDisplay();
     alert(this.winner + " has won the game!!!");
+};
+
+
+/**
+ * declareWinner - sets win variables and stats
+ */
+Game.prototype.declareDraw = function()
+{
+    this.disableButtons();
+
+    this.games_played++;
+
+    this.game_over = true;
+
+    this.updateStatsDisplay();
+    alert("It's a TIE (Fighter)!!!");
 };
 
 

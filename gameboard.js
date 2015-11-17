@@ -2,6 +2,7 @@ function GameBoard()
 {
     this.board = [];
     this.size = 0;  // Number of square in each row AND the number of rows
+    this.empty_squares = 0;
 
     this.resetBoard();
 };
@@ -27,6 +28,8 @@ GameBoard.prototype.constructBoard = function()
             }
         );
     }
+
+    this.empty_squares = this.board.length;
 };
 
 /**
@@ -46,6 +49,8 @@ GameBoard.prototype.resetBoard = function()
  */
 GameBoard.prototype.restartBoard = function()
 {
+    this.empty_squares = this.board.length;
+
     for (var i = 0; i < this.board.length; i++)
     {
         this.board[i]['X'] = false;
@@ -70,8 +75,17 @@ GameBoard.prototype.setSquare = function(square_index, player_char)
         this.board[square_index][player_char] = true;
         this.board[square_index]['empty'] = false;
 
+        this.empty_squares--;
         return true;
     }
     return false;
+};
+
+/**
+ *
+ */
+GameBoard.prototype.isFull = function()
+{
+    return this.empty_squares == 0;
 };
 

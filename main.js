@@ -3,21 +3,11 @@ $(document).ready(function()
 {
     game = new Game();
 
-    //$('.game-area').on('click', 'button', function()
-    //{
-    //    game.squarePicked(this);
-    //});
-    //
-    //$('#submit-button').on('click', function()
-    //{
-    //    game.squarePicked(this);
-    //});
-
-    $('#restart-game').on('click', function()
+    document.getElementById('restart-game').addEventListener('click', function()
     {
         game.restartGame();
     });
-    $('#reset-game').on('click', function()
+    document.getElementById('reset-game').addEventListener('click', function()
     {
         resetGame();
     });
