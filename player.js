@@ -16,6 +16,12 @@ Player.prototype.playSound = function()
     var my_sound = this.sfx;
     my_sound.play();
 };
+Player.prototype.stopSound = function()
+{
+    var my_sound = this.sfx;
+    my_sound.pause();
+    my_sound.curretTime = 0;
+};
 
 
 function PlayerX()

@@ -9,6 +9,7 @@ function Game()
     this.games_played = 0;
     this.players = [];
 
+    this.game_over_sounds = [];
     this.init();
 }
 
@@ -19,6 +20,7 @@ function Game()
 Game.prototype.init = function()
 {
     this.createPlayers();
+    this.getGameOverSounds();
     this.updateStatsDisplay();
     this.enableButtons();
     this.game_board = new GameBoard();
@@ -33,6 +35,22 @@ Game.prototype.createPlayers = function()
 {
     this.players.push(new PlayerX());
     this.players.push(new PlayerO());
+};
+
+
+Game.prototype.getGameOverSounds = function()
+{
+    this.game_over_sounds.push(document.getElementById('sfx_almostthere'));
+    this.game_over_sounds.push(document.getElementById('sfx_jarjar'));
+    this.game_over_sounds.push(document.getElementById('sfx_rebelscum'));
+    this.game_over_sounds.push(document.getElementById('sfx_stayontarget'));
+    this.game_over_sounds.push(document.getElementById('sfx_theyvestopped'));
+    this.game_over_sounds.push(document.getElementById('sfx_trap'));
+};
+Game.prototype.playGameOverSound = function()
+{
+    var which_sound = Math.floor((Math.random() * this.game_over_sounds.length));
+    this.game_over_sounds[which_sound].play();
 };
 
 
@@ -123,6 +141,7 @@ Game.prototype.resetGame = function()
     this.win_conditions = [];
     this.games_played = 0;
     this.players = [];
+    this.game_over_sounds = [];
 
     this.init();
 };
@@ -258,15 +277,22 @@ Game.prototype.declareWinner = function()
     this.games_played++;
 
     if (this.turn == 'X')
+    {
+        this.players[PLAYER_X].stopSound();
         this.players[PLAYER_X].winGame();
+    }
     else
+    {
+        this.players[PLAYER_O].stopSound();
         this.players[PLAYER_O].winGame();
+    }
 
     this.game_over = true;
     this.winner = this.turn;
 
     this.updateStatsDisplay();
-    alert(this.winner + " has won the game!!!");
+    $(".game-area").append($("<h3>").addClass("neon-tubing").html(this.winner + " won!"));
+    this.playGameOverSound();
 };
 
 
@@ -282,7 +308,10 @@ Game.prototype.declareDraw = function()
     this.game_over = true;
 
     this.updateStatsDisplay();
-    alert("It's a TIE (Fighter)!!!");
+    $(".game-area").append($("<h3>").addClass("neon-tubing").html("It's a TIE!"));
+    this.players[PLAYER_X].stopSound();
+    this.players[PLAYER_O].stopSound();
+    this.playGameOverSound();
 };
 
 
