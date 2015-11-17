@@ -6,9 +6,8 @@ function Game()
     this.turn = 'X';
     this.game_over = false;
     this.win_conditions = [];
-    this.x_wins = 0;
-    this.o_wins = 0;
     this.games_played = 0;
+    this.players = [];
 
     this.init();
 }
@@ -19,6 +18,7 @@ function Game()
  */
 Game.prototype.init = function()
 {
+    this.createPlayers();
     this.updateStatsDisplay();
     this.enableButtons();
     this.game_board = new GameBoard();
@@ -26,6 +26,13 @@ Game.prototype.init = function()
     this.setWinConditions();
     this.changeState(new StateInit(this));
     this.run();
+};
+
+
+Game.prototype.createPlayers = function()
+{
+    this.players.push(new PlayerX());
+    this.players.push(new PlayerO());
 };
 
 
@@ -194,7 +201,14 @@ Game.prototype.squarePicked = function(button)
     console.log("Square picked: " + index);
 
     if (this.game_board.setSquare(index, this.turn))
+    {
+        if (this.turn == 'X')
+            this.players[PLAYER_X].playSound();
+        else
+            this.players[PLAYER_O].playSound();
+
         this.run(index);
+    }
 }
 
 
@@ -211,9 +225,9 @@ Game.prototype.declareWinner = function()
     this.games_played++;
 
     if (this.turn == 'X')
-        this.x_wins++;
+        this.players[PLAYER_X].winGame();
     else
-        this.o_wins++;
+        this.players[PLAYER_O].winGame();
 
     this.game_over = true;
     this.winner = this.turn;
@@ -236,8 +250,8 @@ Game.prototype.displayWinnerTest = function()
 Game.prototype.updateStatsDisplay = function()
 {
     // Grab the winner's DOM element
-    $('.x-wins-val').text(this.x_wins);
-    $('.o-wins-val').text(this.o_wins);
+    $('.x-wins-val').text(this.players[PLAYER_X].getWins());
+    $('.o-wins-val').text(this.players[PLAYER_O].getWins());
     $('.games-played-val').text(this.games_played);
 };
 

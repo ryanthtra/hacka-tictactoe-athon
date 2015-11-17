@@ -12,6 +12,11 @@ body{
     margin: 0 auto;
 }
 
+#sound-board
+{
+    display: none;
+}
+
 .header
 {
     width: 100%;
