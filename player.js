@@ -21,6 +21,9 @@ Player.prototype.playSound = function()
 function PlayerX()
 {
     Player.call(this);
+
+    // jQuery grabbing not working for sounds, at least when it comes to calling play()
+    // for a jQuery audio element
     this.sfx = document.getElementById('sfx_lightsaber');
 }
 PlayerX.prototype = new Player();
@@ -29,6 +32,9 @@ PlayerX.prototype.constructor = PlayerX;
 function PlayerO()
 {
     Player.call(this);
+
+    // jQuery grabbing not working for sounds, at least when it comes to calling play()
+    // for a jQuery audio element
     this.sfx = document.getElementById('sfx_blaster');
 }
 PlayerO.prototype = new Player();
