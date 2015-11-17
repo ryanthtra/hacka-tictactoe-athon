@@ -65,7 +65,6 @@ Game.prototype.run = function(index)
 {
     this.display(index);
     this.curr_state.execute(this);
-
     // For the skeleton html
     //this.displayTest();
     //this.display(index);
@@ -88,13 +87,14 @@ Game.prototype.changeState = function(new_state)
  */
 Game.prototype.restartGame = function()
 {
-    this.updateStatsDisplay();
+
     this.enableButtons();
     this.game_board.restartBoard();
     this.constructBoardInDom();
     this.game_over = false;
     this.changeState(new StateInit(this));
     this.run();
+    this.updateStatsDisplay();
 };
 
 
