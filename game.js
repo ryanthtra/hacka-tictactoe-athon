@@ -46,6 +46,7 @@ Game.prototype.getGameOverSounds = function()
     this.game_over_sounds.push(document.getElementById('sfx_stayontarget'));
     this.game_over_sounds.push(document.getElementById('sfx_theyvestopped'));
     this.game_over_sounds.push(document.getElementById('sfx_trap'));
+    this.game_over_sounds.push(document.getElementById('sfx_itsworking'));
 };
 Game.prototype.playGameOverSound = function()
 {
