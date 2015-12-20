@@ -40,13 +40,16 @@ Game.prototype.createPlayers = function()
 
 Game.prototype.getGameOverSounds = function()
 {
-    this.game_over_sounds.push(document.getElementById('sfx_almostthere'));
-    this.game_over_sounds.push(document.getElementById('sfx_jarjar'));
-    this.game_over_sounds.push(document.getElementById('sfx_rebelscum'));
-    this.game_over_sounds.push(document.getElementById('sfx_stayontarget'));
-    this.game_over_sounds.push(document.getElementById('sfx_theyvestopped'));
+    //this.game_over_sounds.push(document.getElementById('sfx_almostthere'));
+    //this.game_over_sounds.push(document.getElementById('sfx_jarjar'));
+    this.game_over_sounds.push(document.getElementById('sfx_tooeasy'));
+    //this.game_over_sounds.push(document.getElementById('sfx_breath'));
+    this.game_over_sounds.push(document.getElementById('sfx_father'));
+    //this.game_over_sounds.push(document.getElementById('sfx_rebelscum'));
+    //this.game_over_sounds.push(document.getElementById('sfx_stayontarget'));
+    //this.game_over_sounds.push(document.getElementById('sfx_theyvestopped'));
     this.game_over_sounds.push(document.getElementById('sfx_trap'));
-    this.game_over_sounds.push(document.getElementById('sfx_itsworking'));
+    //this.game_over_sounds.push(document.getElementById('sfx_itsworking'));
 };
 Game.prototype.playGameOverSound = function()
 {
@@ -309,7 +312,7 @@ Game.prototype.declareDraw = function()
     this.game_over = true;
 
     this.updateStatsDisplay();
-    $(".game-area").append($("<h3>").addClass("neon-tubing").html("It's a TIE!"));
+    $(".game-area").append($("<h3>").addClass("neon-tubing").html("Draw"));
     this.players[PLAYER_X].stopSound();
     this.players[PLAYER_O].stopSound();
     this.playGameOverSound();
