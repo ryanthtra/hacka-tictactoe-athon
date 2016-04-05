@@ -1,11 +1,16 @@
-# hacka-tictactoe-athon
+# Tic Tac Toe Hackathon
 
-Scope: 
-- Make a tic-tac-toe game
-  - at least 2 players
-  - at least 3x3 board size
-  - players alternate in some way or form
-  - one player should be able to win (though is not guaranteed)
-- Additional requirements:
-  - at least 2 board sizes
-  - Dynamic win condition generation: no hard-coded if statements or data structures to determine win conditions.  Such structures can be made, but must be made dynamically via code, not hand-coded in the final product.
+## Description
+This project was originally part of a eight-hour hackathon.  The goal was to create a working two-player game of Tic Tac Toe.  Other features included being able to create addition board sizes to the original 3x3 board.
+
+### Skill Learned and Applied:
+>
+- Teamwork, collaboration, and project management
+- The agile software development process and scrum meetings
+- Division of labor 
+
+### Features added to the original hackathon version:
+>
+- Sound effects
+- Objected-oriented code
+- Responsive page layout
